@@ -42,7 +42,7 @@ export const EndpointForm: React.FC = () => {
                 </Field>
                 <Field>
                     <FieldLabel htmlFor="path">Path</FieldLabel>
-                    <Input id="path" autoComplete="off" />
+                    <Input id="path" autoComplete="off" className="font-mono" />
                     {/* <FieldError>Error.</FieldError> */}
                 </Field>
                 <Field>
