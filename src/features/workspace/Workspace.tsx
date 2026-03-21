@@ -1,0 +1,17 @@
+import { ReactNode } from "react"
+import { Explorer } from "@/features/explorer"
+import { EndpointEditor } from "@/features/endpoint-editor"
+
+
+export const Workspace : React.FC = () => {
+    return (
+        <div className="grid grid-cols-[3fr_9fr] h-full">
+            <div>
+                <Explorer />
+            </div>
+            <div>
+                <EndpointEditor />
+            </div>
+        </div>
+    )
+}
