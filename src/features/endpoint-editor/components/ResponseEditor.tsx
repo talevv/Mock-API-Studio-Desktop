@@ -8,7 +8,7 @@ export const ResponseEditor: React.FC = () => {
                 <FieldLabel>
                     Response
                 </FieldLabel>
-                <Textarea id="response-editor" className="h-full font-mono"/>
+                <Textarea id="response-editor" className="h-full font-mono" defaultValue={"{}"} />
             </Field>
         </>
     )

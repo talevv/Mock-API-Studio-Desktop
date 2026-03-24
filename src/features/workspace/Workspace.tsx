@@ -1,6 +1,5 @@
-import { ReactNode } from "react"
 import { Explorer } from "@/features/explorer"
-import { EndpointEditor } from "@/features/endpoint-editor"
+import { EndpointForm } from "@/features/endpoint-editor"
 
 
 export const Workspace : React.FC = () => {
@@ -10,7 +9,7 @@ export const Workspace : React.FC = () => {
                 <Explorer />
             </div>
             <div>
-                <EndpointEditor />
+                <EndpointForm />
             </div>
         </div>
     )

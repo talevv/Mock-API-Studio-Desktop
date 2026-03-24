@@ -1,1 +1,1 @@
-export {EndpointEditor} from "./components/EndpointEditor"
+export {EndpointForm} from "./components/EndpointForm"
