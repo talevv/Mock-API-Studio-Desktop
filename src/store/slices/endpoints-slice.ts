@@ -1,13 +1,7 @@
+import { Endpoint } from "@/shared/types/endpoint";
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-interface Endpoint {
-    id: string,
-    method: string,
-    path: string,
-    status: number,
-    response: string
-}
 
 const initialState: Array<Endpoint> = []
 
@@ -20,5 +14,7 @@ export const endpointsSlice = createSlice({
         }
     }
 })
+
+export const {addEndpoint} = endpointsSlice.actions
 
 export default endpointsSlice.reducer

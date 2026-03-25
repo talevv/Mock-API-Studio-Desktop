@@ -3,19 +3,15 @@ import { ResponseEditor } from "./ResponseEditor"
 import * as z from "zod";
 import { FormProvider, useForm } from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod"
+import { useDispatch } from "react-redux";
+import { addEndpoint } from "@/store/slices/endpoints-slice";
+import { EndpointFormSchema, EndpointFormData } from "@/shared/types/endpoint";
 
-export const EndpointForm: React.FC = () => {
-    const formSchema = z.object(
-        {
-            method: z.literal(["get", "post", "put", "patch", "delete"], {message: "Select an HTTP method"}),
-            path: z.string().min(1, "Endpoint path is required"),
-            status: z.number({message: "HTTP status code is required"}),
-            body: z.string().optional()
-        }
-    )
+export const EndpointForm = () => {
+    const dispatch = useDispatch();
 
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+    const form = useForm<EndpointFormData>({
+        resolver: zodResolver(EndpointFormSchema),
         defaultValues: {
             method: "get",
             path: "",
@@ -24,8 +20,9 @@ export const EndpointForm: React.FC = () => {
         }
     })
 
-    const onSubmit = (data: z.infer<typeof formSchema>) => {
+    const onSubmit = (data: EndpointFormData) => {
         console.table(data)
+        dispatch(addEndpoint(data))
     }
 
     return (

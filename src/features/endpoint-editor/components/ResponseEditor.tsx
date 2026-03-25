@@ -2,7 +2,7 @@ import { Field, FieldError, FieldLabel } from "@/components/ui/field"
 import { Textarea } from "@/components/ui/textarea"
 import { Controller, useFormContext } from "react-hook-form";
 
-export const ResponseEditor: React.FC = () => {
+export const ResponseEditor = () => {
     const {control} = useFormContext();
 
     return (

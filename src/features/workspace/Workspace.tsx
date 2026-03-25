@@ -2,7 +2,7 @@ import { Explorer } from "@/features/explorer"
 import { EndpointForm } from "@/features/endpoint-editor"
 
 
-export const Workspace : React.FC = () => {
+export const Workspace = () => {
     return (
         <div className="grid grid-cols-[3fr_9fr] h-full">
             <div>

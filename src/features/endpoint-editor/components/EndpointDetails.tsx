@@ -22,7 +22,7 @@ import { HTTP_STATUSES } from "../static-data/statuses"
 import { Button } from "@/components/ui/button"
 import { Controller, useFormContext } from "react-hook-form"
 
-export const EndpointDetails: React.FC = () => {
+export const EndpointDetails = () => {
     const {control} = useFormContext();
 
     return (
