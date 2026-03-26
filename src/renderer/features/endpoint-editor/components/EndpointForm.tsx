@@ -1,17 +1,12 @@
 import { EndpointDetails } from "./EndpointDetails"
 import { ResponseEditor } from "./ResponseEditor"
-import * as z from "zod";
 import { FormProvider, useForm } from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod"
-import { useDispatch } from "react-redux";
-import { addEndpoint } from "@/renderer/store/slices/endpoints-slice";
-import { EndpointFormSchema, EndpointFormData } from "@/renderer/shared/types/endpoint";
+import { EndpointSchema, Endpoint } from "@/shared/types/endpoint";
 
 export const EndpointForm = () => {
-    const dispatch = useDispatch();
-
-    const form = useForm<EndpointFormData>({
-        resolver: zodResolver(EndpointFormSchema),
+    const form = useForm<Endpoint>({
+        resolver: zodResolver(EndpointSchema),
         defaultValues: {
             method: "get",
             path: "",
@@ -20,9 +15,8 @@ export const EndpointForm = () => {
         }
     })
 
-    const onSubmit = (data: EndpointFormData) => {
+    const onSubmit = (data: Endpoint) => {
         console.table(data)
-        dispatch(addEndpoint(data))
     }
 
     return (
