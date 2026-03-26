@@ -1,6 +1,7 @@
 import { app, BrowserWindow } from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
+import { initDb } from './db';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (started) {
@@ -38,7 +39,7 @@ app.whenReady().then(async () => {
     const { default: installExtension, REDUX_DEVTOOLS, REACT_DEVELOPER_TOOLS } = await import('electron-devtools-installer')
     await installExtension([REDUX_DEVTOOLS, REACT_DEVELOPER_TOOLS])
   }
-  
+  initDb()
   createWindow()
 })
 
