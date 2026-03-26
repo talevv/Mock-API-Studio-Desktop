@@ -5,12 +5,14 @@ import { runMigrations } from "./migrations";
 
 let db: Database.Database;
 
-export const initDb = () => {
+export const initDb = (): Database.Database =>  {
     const dbPath = path.join(app.getPath("userData"), "mock-api-studio.db")
     console.log(dbPath)
     db = new Database(dbPath)
     db.pragma('journal_mode = WAL')
     runMigrations(db)
+    
+    return db;
 }
 
 export const getDb = (): Database.Database => {
