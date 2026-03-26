@@ -13,7 +13,7 @@ export const initDb = () => {
     runMigrations(db)
 }
 
-export const getDb = () => {
+export const getDb = (): Database.Database => {
     if (!db) {
         throw new Error("DB not initialized")
     }
