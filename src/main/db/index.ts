@@ -12,3 +12,11 @@ export const initDb = () => {
     db.pragma('journal_mode = WAL')
     runMigrations(db)
 }
+
+export const getDb = () => {
+    if (!db) {
+        throw new Error("DB not initialized")
+    }
+
+    return db;
+}
