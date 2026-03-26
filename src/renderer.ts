@@ -25,10 +25,10 @@
  *  });
  * ```
  */
-import './styles/globals.css'
-import './index.css';
+import '@/renderer/styles/globals.css'
+import '@/renderer/index.css';
 
 console.log(
   '👋 This message is being logged by "renderer.ts", included via Vite',
 );
-import '.';
+import './renderer/index';
