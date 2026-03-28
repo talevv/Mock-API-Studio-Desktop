@@ -1,2 +1,11 @@
-// See the Electron documentation for details on how to use preload scripts:
-// https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
+import { Endpoint, EndpointRow } from "@/shared/types/endpoint";
+import { contextBridge, ipcRenderer } from "electron";
+
+contextBridge.exposeInMainWorld(
+    "api", 
+    {
+        saveEndpoint: (endpoint: Endpoint): Promise<EndpointRow> => {
+            return ipcRenderer.invoke('endpoints:save', endpoint)
+        },
+    }
+)

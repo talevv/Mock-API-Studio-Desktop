@@ -1,10 +1,10 @@
-import { Endpoint } from "@/shared/types/endpoint";
+import { Endpoint, EndpointRow } from "@/shared/types/endpoint";
 import { EndpointsRepository } from "../repositories/endpoints-repository";
 
 export class EndpointsService {
     constructor(private readonly endpointsRepository: EndpointsRepository) {}
 
-    saveEndpoint(endpoint: Endpoint) {
-        this.endpointsRepository.save(endpoint);
+    saveEndpoint(endpoint: Endpoint): EndpointRow {
+        return this.endpointsRepository.save(endpoint);
     }
 }

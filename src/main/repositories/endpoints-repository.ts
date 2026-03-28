@@ -1,16 +1,19 @@
-import { Endpoint } from "@/shared/types/endpoint";
+import { Endpoint, EndpointRow } from "@/shared/types/endpoint";
 import Database from "better-sqlite3";
 
 export interface EndpointsRepository {
-    save(endpoint: Endpoint) : void
+    save(endpoint: Endpoint) : EndpointRow
 }
 
 export class EndpointsRepositorySQlite implements EndpointsRepository {
     constructor(private readonly db: Database.Database) {}
 
-    save(endpoint: Endpoint) {
-        this.db.prepare(`
+    save(endpoint: Endpoint): EndpointRow {
+        const result = this.db.prepare(`
             INSERT INTO endpoints (method, path, status, body) VALUES (@method,@path,@status,@body)
         `).run(endpoint);
+        const endpointRow: EndpointRow = {...endpoint, id: result.lastInsertRowid}
+
+        return endpointRow;
     }
 }

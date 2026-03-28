@@ -15,8 +15,10 @@ export const EndpointForm = () => {
         }
     })
 
-    const onSubmit = (data: Endpoint) => {
+    const onSubmit = async (data: Endpoint) => {
         console.table(data)
+        const res = await window.api.saveEndpoint(data)
+        console.log(res)
     }
 
     return (
