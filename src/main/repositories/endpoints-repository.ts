@@ -2,7 +2,8 @@ import { Endpoint, EndpointRow } from "@/shared/types/endpoint";
 import Database from "better-sqlite3";
 
 export interface EndpointsRepository {
-    save(endpoint: Endpoint) : EndpointRow
+    save(endpoint: Endpoint) : EndpointRow,
+    getAll(): Array<EndpointRow>
 }
 
 export class EndpointsRepositorySQlite implements EndpointsRepository {
@@ -15,5 +16,12 @@ export class EndpointsRepositorySQlite implements EndpointsRepository {
         const endpointRow: EndpointRow = {...endpoint, id: result.lastInsertRowid}
 
         return endpointRow;
+    }
+
+    getAll(): Array<EndpointRow> {
+        const result = this.db.prepare(`
+            SELECT * FROM endpoints    
+        `).all() as Array<EndpointRow>
+        return result
     }
 }

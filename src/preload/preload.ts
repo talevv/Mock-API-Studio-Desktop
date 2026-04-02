@@ -7,5 +7,8 @@ contextBridge.exposeInMainWorld(
         saveEndpoint: (endpoint: Endpoint): Promise<EndpointRow> => {
             return ipcRenderer.invoke('endpoints:save', endpoint)
         },
+        getEndpoints: () : Promise<Array<EndpointRow>> => {
+            return ipcRenderer.invoke('endpoints:getAll')
+        }
     }
 )

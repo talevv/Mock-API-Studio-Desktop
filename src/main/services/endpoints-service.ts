@@ -7,4 +7,8 @@ export class EndpointsService {
     saveEndpoint(endpoint: Endpoint): EndpointRow {
         return this.endpointsRepository.save(endpoint);
     }
+
+    getAllEndpoints(): Array<EndpointRow> {
+        return this.endpointsRepository.getAll()
+    }
 }
