@@ -1,8 +1,8 @@
-import { Endpoint, EndpointRow } from "@/shared/types/endpoint";
+import { Endpoint, Response } from "@/shared/types/endpoint";
 
 export interface ElectronAPI {
-  saveEndpoint: (endpoint: Endpoint) => Promise<EndpointRow>,
-  getEndpoints: () => Promise<Array<EndpointRow>>
+  saveEndpoint: (endpoint: Endpoint) => Promise<Response>,
+  getEndpoints: () => Promise<Response>
 }
 
 declare global {

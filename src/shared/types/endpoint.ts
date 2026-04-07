@@ -14,3 +14,9 @@ export const EndpointSchema = z.object(
 export type HttpMethod = z.infer<typeof HttpMethodSchema>
 export type Endpoint = z.infer<typeof EndpointSchema>
 export type EndpointRow = Endpoint & { id: number | bigint }
+
+export interface Response {
+    success: boolean,
+    data?: EndpointRow | Array<EndpointRow>,
+    error?: string
+}

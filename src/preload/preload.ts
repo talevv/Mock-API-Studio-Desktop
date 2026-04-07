@@ -1,13 +1,13 @@
-import { Endpoint, EndpointRow } from "@/shared/types/endpoint";
+import { Endpoint, Response } from "@/shared/types/endpoint";
 import { contextBridge, ipcRenderer } from "electron";
 
 contextBridge.exposeInMainWorld(
     "api", 
     {
-        saveEndpoint: (endpoint: Endpoint): Promise<EndpointRow> => {
+        saveEndpoint: (endpoint: Endpoint): Promise<Response> => {
             return ipcRenderer.invoke('endpoints:save', endpoint)
         },
-        getEndpoints: () : Promise<Array<EndpointRow>> => {
+        getEndpoints: (): Promise<Response> => {
             return ipcRenderer.invoke('endpoints:getAll')
         }
     }
